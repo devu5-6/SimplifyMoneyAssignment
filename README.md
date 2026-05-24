@@ -1,56 +1,27 @@
-# Welcome to your Expo app 👋
+# Simplify Money: Live Precious Metals Tracker
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+### **Project Overview**
+I built a cross-platform mobile application using **React Native and Expo** to track live precious metal prices. The app fetches simulated live data for Gold, Silver, Platinum, and Palladium, displaying them in a modern, responsive interface. 
 
-## Get started
+### **My Approach**
+* **Modern Navigation:** I used **Expo Router** for file-based routing. This provides a cleaner project structure and handles complex navigation states natively without relying on nested navigation containers.
+* **Independent Loaders:** I designed the `MetalTile` component to handle its own state. When the app loads, each tile independently calls the API, showing its own loading spinner. If one API call fails, only that specific tile shows an error and a "Retry" button, rather than crashing the whole screen.
+* **Mock API Simulation:** To make the assignment easy to review without needing third-party API keys, I created a robust Mock API. It includes artificial network delays (1-3 seconds), calculates realistic price fluctuations, and has a 10% simulated failure rate to demonstrate proper error handling.
+* **Modern UI Styling:** I integrated **NativeWind (Tailwind CSS)**. This allowed me to rapidly build a highly aesthetic, "fintech-style" user interface with clean typography, rounded cards, and dynamic text coloring (e.g., green for positive trends, red for negative or errors) without writing massive custom stylesheets.
+* **TypeScript Integration:** I used TypeScript to define strict interfaces for the metal data. This ensures that the data passed from the home screen to the details screen is completely type-safe, preventing runtime errors.
 
-1. Install dependencies
+### **Solution Details**
+* **Home Screen:** Displays a scrollable list of the four requested metals. Each tile displays the metal name, purity (karat), current price per gram, and the exact timestamp of the last update.
+* **Details Screen:** Clicking on a tile seamlessly transitions to a details page. To optimize performance, the app passes the already-fetched data through the router parameters, eliminating the need for a redundant secondary API call. It displays expanded stats like previous close and today's open.
 
-   ```bash
-   npm install
-   ```
+### **Deployment & Execution Notes**
 
-2. Start the app
+**Prerequisites:**
+You will need Node.js installed on your machine. To view the app on your physical phone, download the **Expo Go** app from the iOS App Store or Google Play Store.
 
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-### Other setup steps
-
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+**Steps to Run Locally:**
+1. **Unzip the project** and open the folder in your terminal.
+2. **Install dependencies:** Run `npm install` to download all necessary packages.
+3. **Start the server:** Run `npx expo start -c` (the `-c` flag ensures the cache is cleared so Tailwind compiles perfectly).
+4. **View the app:** * **On your phone:** Open the Expo Go app and scan the QR code generated in your terminal.
+   * **On an emulator:** Press `a` in the terminal to open it in an Android Emulator, or `i` for an iOS Simulator.
